@@ -1,22 +1,24 @@
 //
-//  MainTableViewCell.swift
+//  RoomsTableViewCell.swift
 //  HotelApp
 //
-//  Created by Дильяра Кдырова on 16.12.2023.
+//  Created by Дильяра Кдырова on 20.12.2023.
 //
 
 import UIKit
 import SnapKit
-import Kingfisher
-//import SDWebImage
 
-class MainTableViewCell: UITableViewCell {
+class RoomsTableViewCell: UITableViewCell {
+    
     
     private var collectionView: UICollectionView!
     private var pageControl: UIPageControl!
     private var imageNames: [String] = ["https://www.atorus.ru/sites/default/files/upload/image/News/56149/Club_Priv%C3%A9_by_Belek_Club_House.jpg",
          "https://deluxe.voyage/useruploads/articles/The_Makadi_Spa_Hotel_02.jpg",
          "https://deluxe.voyage/useruploads/articles/article_1eb0a64d00.jpg"]
+    private var peculiarities: [String] = []
+    
+    var buttonTappedClosure: (() -> Void)?
 
     //MARK: - Init
     
@@ -32,15 +34,6 @@ class MainTableViewCell: UITableViewCell {
     
     //MARK: - Views
     
-    private lazy var firstView: UIView = {
-        let vieww = UIView()
-        vieww.backgroundColor = .white
-        vieww.translatesAutoresizingMaskIntoConstraints = false
-        vieww.layer.cornerRadius = 10
-        
-        return vieww
-    }()
-    
     private lazy var carousel: UIView = {
         let vieww = UIView()
         vieww.backgroundColor = .black
@@ -50,64 +43,49 @@ class MainTableViewCell: UITableViewCell {
         return vieww
     }()
     
-    private lazy var ratingView: UIView = {
-        let vieww = UIView()
-        vieww.backgroundColor = UIColor(hexString: "#FFA800").withAlphaComponent(0.2)
-        vieww.translatesAutoresizingMaskIntoConstraints = false
-        vieww.layer.cornerRadius = 5
-        
-        return vieww
-    }()
-    
-    private lazy var ratingLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "SF Pro Display", size: 16)
-        label.font = UIFont.boldSystemFont(ofSize: 16)
-        label.textColor = UIColor(hexString: "#FFA800")
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    private lazy var ratingImage: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "Star"))
-        
-        return imageView
-    }()
-    
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "SF Pro Display", size: 22)
         label.font = UIFont.boldSystemFont(ofSize: 22)
+        label.text = "Text"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         
         return label
     }()
     
-    private lazy var addressButton: UIButton = {
+    private lazy var overallStackView: UIStackView = {
+        let overallStackView = UIStackView()
+        overallStackView.axis = .vertical
+        overallStackView.spacing = 8
+        overallStackView.alignment = .leading
+        overallStackView.translatesAutoresizingMaskIntoConstraints = false
+        return overallStackView
+    }()
+    
+    private lazy var moreButtonView: UIView = {
+        let vieww = UIView()
+        vieww.backgroundColor = UIColor(hexString: "#0D72FF").withAlphaComponent(0.1)
+        return vieww
+    }()
+    
+    private lazy var moreButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor(hexString: "#0D72FF"), for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 14.0, weight: .medium)
+        button.setTitle("Подробнее о номере", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16.0, weight: .bold)
         return button
     }()
     
-    private lazy var detailStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [nameLabel, addressButton])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
-        stackView.alignment = .leading
-        
-        return stackView
+    private lazy var moreButtonAArrow: UIImageView = {
+        let imageview = UIImageView(image: UIImage(named: "arrow-blue"))
+        return imageview
     }()
     
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "SF Pro Display", size: 30)
         label.font = UIFont.boldSystemFont(ofSize: 30)
-        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
@@ -116,7 +94,6 @@ class MainTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont(name: "SF Pro Display", size: 16)
         label.textColor = UIColor(hexString: "#828796")
-        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
@@ -130,33 +107,95 @@ class MainTableViewCell: UITableViewCell {
         
         return stackView
     }()
+    
+    private lazy var buttonChoose: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(hexString: "#0D72FF")
+        button.setTitleColor(UIColor(hexString: "#FFFFFF"), for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16.0, weight: .bold)
+        button.setTitle("Выбрать номер", for: .normal)
+        button.layer.cornerRadius = 15
+        button.addTarget(self, action: #selector(nextPage), for: .touchUpInside)
+        return button
+    }()
 
+    
     //MARK: - Methods
     
     private func setUpViews() {
+        contentView.backgroundColor = UIColor(hexString: "#FFFFFF")
         
-        contentView.addSubview(firstView)
+        [moreButton, moreButtonAArrow].forEach {
+            moreButtonView.addSubview($0)
+        }
         
-        [ratingImage, ratingLabel].forEach {
-            ratingView.addSubview($0)
+        [carousel, nameLabel, overallStackView, moreButtonView, priceStackView, buttonChoose].forEach {
+            contentView.addSubview($0)
         }
         
         setupCollectionView()
         setupPageControl()
-        
-        [carousel, ratingView, detailStackView, priceStackView].forEach {
-            firstView.addSubview($0)
-        }
-        
         setConstraints()
     }
     
-    func configure(with model: HotelModelProtocol) {
+    func configure(with model: RoomsModelProtocol) {
         nameLabel.text = model.name
-        addressButton.setTitle(model.adress, for: .normal)
+        peculiarities = model.peculiarities
+        setupPeculiaritiesStackViews()
         priceLabel.text = model.price
-        ratingLabel.text = model.rating + model.ratingName
-        priceTextLabel.text = model.priceForIt
+        priceTextLabel.text = model.pricePer
+    }
+    
+    private func setupPeculiaritiesStackViews() {
+        var horizontalStackView: UIStackView?
+        
+        for (_, text) in peculiarities.enumerated() {
+            let label = UILabel()
+            label.text = text
+            label.textAlignment = .left
+            label.textColor = UIColor(hexString: "#828796")
+            label.font = UIFont(name: "SF Pro Display", size: 16)
+            label.font = UIFont.boldSystemFont(ofSize: 16)
+
+            let container = UIView()
+            container.backgroundColor = UIColor(hexString: "#FBFBFC")
+//            container.backgroundColor = .red
+            container.layer.cornerRadius = 5
+            container.addSubview(label)
+            
+
+            label.snp.makeConstraints { make in
+                make.top.equalTo(container).offset(5)
+                make.left.equalTo(container).offset(10)
+                make.right.equalTo(container).offset(-10)
+                make.bottom.equalTo(container).offset(-5)
+            }
+        
+            if horizontalStackView == nil {
+                horizontalStackView = createHorizontalStackView()
+            }
+            
+            horizontalStackView?.addArrangedSubview(container)
+            
+            if horizontalStackView?.arrangedSubviews.count == 2 {
+                overallStackView.addArrangedSubview(horizontalStackView!)
+                horizontalStackView = nil
+            }
+        }
+        
+        if let horizontalStackView = horizontalStackView {
+            overallStackView.addArrangedSubview(horizontalStackView)
+        }
+    }
+
+    private func createHorizontalStackView() -> UIStackView {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 8
+        stackView.alignment = .leading
+        stackView.distribution = .fillEqually
+        
+        return stackView
     }
     
     
@@ -179,6 +218,7 @@ class MainTableViewCell: UITableViewCell {
             make.edges.equalToSuperview()
         }
     }
+    
     
     func setupPageControl() {
         pageControl = UIPageControl()
@@ -207,60 +247,71 @@ class MainTableViewCell: UITableViewCell {
         ])
     }
     
+    @objc func nextPage() {
+        buttonTappedClosure?()
+    }
 }
 
 //MARK: - Constraints
 
-extension MainTableViewCell {
-    
+extension RoomsTableViewCell {
     private func setConstraints() {
-        firstView.snp.makeConstraints { make in
-            make.edges.equalTo(contentView)
-        }
-
+        
         carousel.snp.makeConstraints { make in
-            make.top.equalTo(firstView).offset(16)
-            make.leading.equalTo(firstView).offset(16)
-            make.trailing.equalTo(firstView).offset(-16)
+            make.top.equalTo(contentView)
+            make.leading.equalTo(contentView).offset(16)
+            make.trailing.equalTo(contentView).offset(-16)
             make.height.equalTo(257)
         }
-
-        ratingView.snp.makeConstraints { make in
+        
+        nameLabel.snp.makeConstraints { make in
             make.top.equalTo(carousel.snp.bottom).offset(16)
-            make.leading.equalTo(firstView).offset(16)
-            make.trailing.equalTo(firstView).offset(-210)
-            make.height.equalTo(37)
+            make.leading.equalTo(contentView.snp.leading).offset(16)
+            make.trailing.equalTo(contentView.snp.trailing).offset(-16)
         }
-
-        detailStackView.snp.makeConstraints { make in
-            make.top.equalTo(ratingView.snp.bottom).offset(16)
-            make.leading.equalTo(carousel)
-            make.trailing.equalTo(firstView).offset(-16)
+        
+        overallStackView.snp.makeConstraints { make in
+            make.top.equalTo(nameLabel.snp.bottom).offset(16)
+            make.leading.equalTo(contentView.snp.leading).offset(16)
+        }
+        
+        moreButtonView.snp.makeConstraints { make in
+            make.top.equalTo(overallStackView.snp.bottom).offset(16)
+            make.leading.equalTo(contentView.snp.leading).offset(16)
+            make.trailing.equalTo(contentView.snp.trailing).offset(-167)
+        }
+        
+        moreButton.snp.makeConstraints { make in
+            make.top.equalTo(moreButtonView).offset(5)
+            make.leading.equalTo(moreButtonView).offset(10)
+            make.bottom.equalTo(moreButtonView).offset(-5)
+        }
+        
+        moreButtonAArrow.snp.makeConstraints { make in
+            make.top.equalTo(moreButtonView).offset(4)
+            make.leading.equalTo(moreButton.snp.trailing).offset(2)
+            make.trailing.equalTo(moreButtonView).offset(-2)
+            make.bottom.equalTo(moreButtonView).offset(-4)
+//            make.height.equalTo(24)
         }
         
         priceStackView.snp.makeConstraints { make in
-            make.top.equalTo(detailStackView.snp.bottom).offset(16)
-            make.leading.equalTo(carousel)
-            make.trailing.equalTo(firstView).offset(-42)
-        }
-
-        ratingLabel.snp.makeConstraints { make in
-            make.top.equalTo(ratingView).offset(5)
-            make.leading.equalTo(ratingView).offset(29)
-            make.trailing.equalTo(ratingView).offset(-10)
-            make.bottom.equalTo(ratingView).offset(-5)
+            make.top.equalTo(moreButtonView.snp.bottom).offset(16)
+            make.leading.equalTo(contentView.snp.leading).offset(16)
+            make.trailing.equalTo(contentView.snp.trailing).offset(-42)
         }
         
-        ratingImage.snp.makeConstraints { make in
-            make.top.equalTo(ratingView).offset(10)
-            make.leading.equalTo(ratingView).offset(10)
-            make.trailing.equalTo(ratingView).offset(-140)
-            make.bottom.equalTo(ratingView).offset(-10)
+        buttonChoose.snp.makeConstraints { make in
+            make.top.equalTo(priceStackView.snp.bottom).offset(16)
+            make.leading.equalTo(contentView.snp.leading).offset(16)
+            make.trailing.equalTo(contentView.snp.trailing).offset(-16)
+            make.bottom.equalTo(contentView).offset(-16)
         }
     }
 }
 
-extension MainTableViewCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
+extension RoomsTableViewCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
          return imageNames.count
@@ -269,17 +320,14 @@ extension MainTableViewCell: UICollectionViewDataSource, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarouselCell", for: indexPath)
         
-        // Проверяем, есть ли уже UIImageView в ячейке
         if let imageView = cell.contentView.viewWithTag(42) as? UIImageView {
-            // Если есть, просто обновляем изображение
             imageView.kf.setImage(with: URL(string: imageNames[indexPath.item]))
         } else {
-            // Если нет, добавляем новый UIImageView
             let imageView = UIImageView(frame: cell.contentView.bounds)
             imageView.contentMode = .scaleAspectFill
             imageView.clipsToBounds = true
             imageView.kf.setImage(with: URL(string: imageNames[indexPath.item]))
-            imageView.tag = 42 // Присваиваем тег, чтобы позже идентифицировать UIImageView
+            imageView.tag = 42
             
             cell.contentView.addSubview(imageView)
             
@@ -302,3 +350,4 @@ extension MainTableViewCell: UICollectionViewDataSource, UICollectionViewDelegat
          pageControl.currentPage = Int(pageIndex)
      }
 }
+

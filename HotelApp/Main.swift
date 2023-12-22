@@ -25,6 +25,14 @@ final class Main {
         HotelService(client: network)
     }
     
+    func roomsService() -> RoomsServiceProtocol {
+        RoomsService(client: network)
+    }
+    
+    func bookingService() -> BookingServiceProtocol {
+        BookingService(client: network)
+    }
+    
     func hotelScreen() -> UIViewController {
         let presenter = HotelPresenter(service: hotelService())
         let view = HotelViewController(presenter: presenter)
@@ -33,14 +41,22 @@ final class Main {
         return view
     }
     
-//    func detailsScreen(for model: CountryModelProtocol) -> DetailViewController {
-//        let presenter = DetailPresenter(service: countryService(), model: model)
-//        let detailVC = DetailViewController(presenter: presenter)
-//        return detailVC
-//    }
-    
     func navController() -> UINavigationController {
         return UINavigationController(rootViewController: hotelScreen())
+    }
+    
+    func roomsScreen() -> UIViewController {
+        let presenter = RoomsPresenter(service: roomsService())
+        let roomsVC = RoomsViewController(presenter: presenter)
+        presenter.view = roomsVC
+        
+        return roomsVC
+    }
+    
+    func bookingScreen() -> UIViewController {
+        let presenter = BookingPresenter(service: bookingService())
+        let bookingVC = BookingViewController(presenter: presenter)
+        return bookingVC
     }
 }
 

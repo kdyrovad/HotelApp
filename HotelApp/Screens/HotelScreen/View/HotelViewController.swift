@@ -41,12 +41,6 @@ class HotelViewController: UIViewController {
     
     //MARK: - Views
     
-    private lazy var footerViewOfTable: UIView = {
-        let vieww = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        vieww.backgroundColor = .blue
-        return vieww
-    }()
-    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -107,7 +101,9 @@ extension HotelViewController: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "buttonCell", for: indexPath) as? ButtonTableViewCell else {
                 return UITableViewCell()
             }
-//            tableView.isScrollEnabled = false
+            cell.buttonTappedClosure = {
+                self.navigationController?.pushViewController(Main.shared.roomsScreen(), animated: true)
+            }
             return cell
         }
         else {
@@ -142,38 +138,6 @@ extension HotelViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1
     }
-    
-    
-    
-    
-//    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        if section == numberOfSections(in: tableView) - 1 {
-//            // Устанавливаем высоту футера после последнего раздела
-//            return 20.0 // Задайте желаемую высоту между последним разделом и футером
-//        } else {
-//            return 0.0 // Если это не последний раздел, высота футера будет 0
-//        }
-//    }
-//
-//    // Настройка содержимого футера
-//    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        if section == numberOfSections(in: tableView) - 1 {
-//            // Настройка содержимого футера только для последнего раздела
-//            let footerView = UIView()
-//            footerView.backgroundColor = .blue // Цвет фона футера
-//
-//            // Вы можете добавить другие представления и элементы управления внутри футера
-//            let label = UILabel()
-//            label.text = "Ваш футер"
-//            label.textColor = .white
-//            footerView.addSubview(label)
-//
-//            return footerView
-//        } else {
-//            return nil // Если это не последний раздел, возвращаем nil для отсутствия футера
-//        }
-//    }
-
 }
 
 

@@ -10,6 +10,8 @@ import SnapKit
 
 class ButtonTableViewCell: UITableViewCell {
     
+    var buttonTappedClosure: (() -> Void)?
+    
     //MARK: - Views
     
     private lazy var buttonChoose: UIButton = {
@@ -19,6 +21,7 @@ class ButtonTableViewCell: UITableViewCell {
         button.titleLabel?.font = .systemFont(ofSize: 16.0, weight: .bold)
         button.setTitle("К выбору номера", for: .normal)
         button.layer.cornerRadius = 15
+        button.addTarget(self, action: #selector(nomer), for: .touchUpInside)
 
         return button
     }()
@@ -34,6 +37,12 @@ class ButtonTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Methods
+    
+    @objc func nomer() {
+        buttonTappedClosure?()
     }
     
     //MARK: - Constraints

@@ -1,20 +1,19 @@
 //
-//  RoomsViewController.swift
+//  BookingViewController.swift
 //  HotelApp
 //
-//  Created by Дильяра Кдырова on 16.12.2023.
+//  Created by Дильяра Кдырова on 20.12.2023.
 //
 
 import UIKit
-import SnapKit
 
-class RoomsViewController: UIViewController {
+class BookingViewController: UIViewController {
     
-    private var presenter: RoomsPresenterProtocol
-    
+    private var presenter: BookingPresenterProtocol
+
     //MARK: - Init
     
-    init(presenter: RoomsPresenterProtocol) {
+    init(presenter: BookingPresenterProtocol) {
         self.presenter = presenter
         
         super.init(nibName: nil, bundle: nil)
@@ -28,7 +27,7 @@ class RoomsViewController: UIViewController {
         navigationItem.titleView = titleLabel
         view.backgroundColor = .white
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +41,7 @@ class RoomsViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.text = "Лучший пятизвездочный отель в Хургаде, Египет"
+        titleLabel.text = "Бронирование"
         titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
         titleLabel.textColor = .black
         return titleLabel
@@ -50,7 +49,9 @@ class RoomsViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(RoomsTableViewCell.self, forCellReuseIdentifier: "roomCell")
+        tableView.register(IntroTableViewCell.self, forCellReuseIdentifier: "introCell")
+        tableView.register(BookingDataTableViewCell.self, forCellReuseIdentifier: "dataCell")
+        tableView.register(ClientDataTableViewCell.self, forCellReuseIdentifier: "clientDataCell")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
@@ -59,14 +60,6 @@ class RoomsViewController: UIViewController {
     }()
     
     //MARK: - Methods
-    
-    private func setUpViews() {
-        setBackButton()
-        
-        view.addSubview(tableView)
-        
-        tableView.snp.makeConstraints { $0.edges.equalToSuperview() }
-    }
     
     private func setBackButton() {
         let backButton = UIButton(type: .custom)
@@ -81,40 +74,55 @@ class RoomsViewController: UIViewController {
     @objc private func backButtonTapped() {
         navigationController?.popViewController(animated: true)
     }
+    
+    private func setUpViews() {
+        setBackButton()
+        
+        view.addSubview(tableView)
+        
+        tableView.snp.makeConstraints { $0.edges.equalToSuperview() }
+    }
 }
 
-extension RoomsViewController: UITableViewDataSource, UITableViewDelegate {
+// MARK: - UITableViewDataSource, UITableViewDelegate
+
+extension BookingViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "roomCell", for: indexPath) as? RoomsTableViewCell else {
-                    return UITableViewCell()
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "introCell", for: indexPath) as? IntroTableViewCell else {
+                return UITableViewCell()
             }
             cell.layer.cornerRadius = 12
             cell.configure(with: presenter.model())
-            RoomsModel.roomIndex += 1
-            cell.buttonTappedClosure = {
-                self.navigationController?.pushViewController(Main.shared.bookingScreen(), animated: true)
-                RoomsModel.roomIndex = 0
+            return cell
+        } else if indexPath.section == 1 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath) as? BookingDataTableViewCell else {
+                return UITableViewCell()
             }
+            cell.layer.cornerRadius = 12
+            cell.configure(with: presenter.model())
+            return cell
+        } else if indexPath.section == 2 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "clientDataCell", for: indexPath) as? ClientDataTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.layer.cornerRadius = 12
+//            cell.configure(with: presenter.model())
             return cell
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "roomCell", for: indexPath) as? RoomsTableViewCell else {
-                    return UITableViewCell()
-            }
-            cell.layer.cornerRadius = 12
-            cell.backgroundColor = .yellow
-            cell.configure(with: presenter.model())
-            cell.buttonTappedClosure = {
-                self.navigationController?.pushViewController(Main.shared.bookingScreen(), animated: true)
-                RoomsModel.roomIndex = 0
-            }
-            return cell
+            return UITableViewCell()
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        580
+        if indexPath.section == 0 {
+            return 150
+        } else if indexPath.section == 1 {
+            return 350
+        } else {
+            return 200
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -128,7 +136,7 @@ extension RoomsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        presenter.model().roomsCount
+        3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -136,12 +144,11 @@ extension RoomsViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+//MARK: - BookingViewProtocol
 
-//MARK: - RoomsViewProtocol
-
-extension RoomsViewController: RoomsViewProtocol {
+extension BookingViewController: BookingViewProtocol {
     func updateView() {
-//        tableView.reloadData()
+        tableView.reloadData()
     }
     
     func updateView(withLoader isLoading: Bool) {
@@ -157,4 +164,5 @@ extension RoomsViewController: RoomsViewProtocol {
     
     func updateView(withError message: String) {}
 }
+
 

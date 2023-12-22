@@ -30,6 +30,19 @@
 		2DABA98E2B2FB78B00352B04 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DABA98D2B2FB78B00352B04 /* DetailTableViewCell.swift */; };
 		2DABA9902B3042B000352B04 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 2DABA98F2B3042B000352B04 /* Podfile */; };
 		2DABA9922B32F59C00352B04 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DABA9912B32F59C00352B04 /* ButtonTableViewCell.swift */; };
+		2DABA9972B330DCF00352B04 /* RoomsResponce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DABA9962B330DCF00352B04 /* RoomsResponce.swift */; };
+		2DABA99B2B33110500352B04 /* RoomsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DABA99A2B33110500352B04 /* RoomsService.swift */; };
+		2DABA99E2B33115000352B04 /* RoomsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DABA99D2B33115000352B04 /* RoomsModel.swift */; };
+		2DABA9A12B33146100352B04 /* RoomsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DABA9A02B33146100352B04 /* RoomsPresenter.swift */; };
+		2DABA9A42B3317DD00352B04 /* RoomsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DABA9A32B3317DD00352B04 /* RoomsTableViewCell.swift */; };
+		2DABA9A82B33661F00352B04 /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DABA9A72B33661F00352B04 /* BookingViewController.swift */; };
+		2DABA9AB2B3463D100352B04 /* IntroTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DABA9AA2B3463D000352B04 /* IntroTableViewCell.swift */; };
+		2DABA9B02B349B1F00352B04 /* BookingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DABA9AF2B349B1E00352B04 /* BookingService.swift */; };
+		2DABA9B22B349BD000352B04 /* BookingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DABA9B12B349BD000352B04 /* BookingModel.swift */; };
+		2DABA9B42B349C1F00352B04 /* BookingResponce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DABA9B32B349C1F00352B04 /* BookingResponce.swift */; };
+		2DABA9B62B34A43A00352B04 /* BookingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DABA9B52B34A43A00352B04 /* BookingPresenter.swift */; };
+		2DABA9B82B34B10F00352B04 /* BookingDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DABA9B72B34B10F00352B04 /* BookingDataTableViewCell.swift */; };
+		2DABA9BA2B34BFE400352B04 /* ClientDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DABA9B92B34BFE400352B04 /* ClientDataTableViewCell.swift */; };
 		D558BF2AC78A82982A7D68F8 /* Pods_HotelApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E385DE8554C435897DA16628 /* Pods_HotelApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +91,19 @@
 		2DABA98D2B2FB78B00352B04 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		2DABA98F2B3042B000352B04 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		2DABA9912B32F59C00352B04 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
+		2DABA9962B330DCF00352B04 /* RoomsResponce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsResponce.swift; sourceTree = "<group>"; };
+		2DABA99A2B33110500352B04 /* RoomsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsService.swift; sourceTree = "<group>"; };
+		2DABA99D2B33115000352B04 /* RoomsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsModel.swift; sourceTree = "<group>"; };
+		2DABA9A02B33146100352B04 /* RoomsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsPresenter.swift; sourceTree = "<group>"; };
+		2DABA9A32B3317DD00352B04 /* RoomsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsTableViewCell.swift; sourceTree = "<group>"; };
+		2DABA9A72B33661F00352B04 /* BookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
+		2DABA9AA2B3463D000352B04 /* IntroTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroTableViewCell.swift; sourceTree = "<group>"; };
+		2DABA9AF2B349B1E00352B04 /* BookingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingService.swift; sourceTree = "<group>"; };
+		2DABA9B12B349BD000352B04 /* BookingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingModel.swift; sourceTree = "<group>"; };
+		2DABA9B32B349C1F00352B04 /* BookingResponce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingResponce.swift; sourceTree = "<group>"; };
+		2DABA9B52B34A43A00352B04 /* BookingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingPresenter.swift; sourceTree = "<group>"; };
+		2DABA9B72B34B10F00352B04 /* BookingDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDataTableViewCell.swift; sourceTree = "<group>"; };
+		2DABA9B92B34BFE400352B04 /* ClientDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientDataTableViewCell.swift; sourceTree = "<group>"; };
 		4FEC4CF2E8A37140936AB1E2 /* Pods-HotelApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotelApp.debug.xcconfig"; path = "Target Support Files/Pods-HotelApp/Pods-HotelApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7ECB20AF9C5BAA27BA032C16 /* Pods-HotelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotelApp.release.xcconfig"; path = "Target Support Files/Pods-HotelApp/Pods-HotelApp.release.xcconfig"; sourceTree = "<group>"; };
 		E385DE8554C435897DA16628 /* Pods_HotelApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HotelApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +204,7 @@
 		2DABA9782B2DC8BB00352B04 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2DABA9A52B3365EA00352B04 /* BookingScreen */,
 				2DABA9932B32FFC600352B04 /* RoomsScreen */,
 				2DABA9792B2DC8C600352B04 /* HotelScreen */,
 			);
@@ -243,6 +270,9 @@
 		2DABA9932B32FFC600352B04 /* RoomsScreen */ = {
 			isa = PBXGroup;
 			children = (
+				2DABA99F2B33145500352B04 /* Presenter */,
+				2DABA99C2B33113A00352B04 /* Model */,
+				2DABA9952B330DB900352B04 /* Service */,
 				2DABA9942B32FFD200352B04 /* View */,
 			);
 			path = RoomsScreen;
@@ -251,9 +281,98 @@
 		2DABA9942B32FFD200352B04 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2DABA9A22B33176F00352B04 /* Cells */,
 				2DABA96D2B2D19C100352B04 /* RoomsViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2DABA9952B330DB900352B04 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2DABA9962B330DCF00352B04 /* RoomsResponce.swift */,
+				2DABA99A2B33110500352B04 /* RoomsService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		2DABA99C2B33113A00352B04 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2DABA99D2B33115000352B04 /* RoomsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2DABA99F2B33145500352B04 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				2DABA9A02B33146100352B04 /* RoomsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		2DABA9A22B33176F00352B04 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2DABA9A32B3317DD00352B04 /* RoomsTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		2DABA9A52B3365EA00352B04 /* BookingScreen */ = {
+			isa = PBXGroup;
+			children = (
+				2DABA9AE2B349AFD00352B04 /* Model */,
+				2DABA9AD2B349AEF00352B04 /* Service */,
+				2DABA9AC2B349AD700352B04 /* Presenter */,
+				2DABA9A62B3365FA00352B04 /* Views */,
+			);
+			path = BookingScreen;
+			sourceTree = "<group>";
+		};
+		2DABA9A62B3365FA00352B04 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2DABA9A92B3463AF00352B04 /* Cells */,
+				2DABA9A72B33661F00352B04 /* BookingViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2DABA9A92B3463AF00352B04 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2DABA9AA2B3463D000352B04 /* IntroTableViewCell.swift */,
+				2DABA9B72B34B10F00352B04 /* BookingDataTableViewCell.swift */,
+				2DABA9B92B34BFE400352B04 /* ClientDataTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		2DABA9AC2B349AD700352B04 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				2DABA9B52B34A43A00352B04 /* BookingPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		2DABA9AD2B349AEF00352B04 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2DABA9AF2B349B1E00352B04 /* BookingService.swift */,
+				2DABA9B32B349C1F00352B04 /* BookingResponce.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		2DABA9AE2B349AFD00352B04 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2DABA9B12B349BD000352B04 /* BookingModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		87DE16D49953D2A77B1921F4 /* Pods */ = {
@@ -450,21 +569,34 @@
 			files = (
 				2DABA96E2B2D19C100352B04 /* RoomsViewController.swift in Sources */,
 				2DABA9872B2DCCB200352B04 /* HotelModel.swift in Sources */,
+				2DABA9A42B3317DD00352B04 /* RoomsTableViewCell.swift in Sources */,
+				2DABA9B22B349BD000352B04 /* BookingModel.swift in Sources */,
 				2DABA9742B2DC77E00352B04 /* NetworkError.swift in Sources */,
+				2DABA99B2B33110500352B04 /* RoomsService.swift in Sources */,
+				2DABA99E2B33115000352B04 /* RoomsModel.swift in Sources */,
 				2DABA9762B2DC79A00352B04 /* NetworkService.swift in Sources */,
 				2DABA98C2B2E02A700352B04 /* MainTableViewCell.swift in Sources */,
 				2DABA9842B2DCC0E00352B04 /* HotelPresenter.swift in Sources */,
+				2DABA9BA2B34BFE400352B04 /* ClientDataTableViewCell.swift in Sources */,
 				2DABA97D2B2DC91000352B04 /* HotelRouter.swift in Sources */,
+				2DABA9AB2B3463D100352B04 /* IntroTableViewCell.swift in Sources */,
 				2DABA9422B2CB6A500352B04 /* HotelViewController.swift in Sources */,
+				2DABA9A82B33661F00352B04 /* BookingViewController.swift in Sources */,
 				2DABA9702B2DC73E00352B04 /* Router.swift in Sources */,
 				2DABA93E2B2CB6A500352B04 /* AppDelegate.swift in Sources */,
 				2DABA98E2B2FB78B00352B04 /* DetailTableViewCell.swift in Sources */,
+				2DABA9B02B349B1F00352B04 /* BookingService.swift in Sources */,
+				2DABA9B82B34B10F00352B04 /* BookingDataTableViewCell.swift in Sources */,
 				2DABA9812B2DCB3300352B04 /* HotelService.swift in Sources */,
 				2DABA9722B2DC76400352B04 /* HttpMethod.swift in Sources */,
+				2DABA9A12B33146100352B04 /* RoomsPresenter.swift in Sources */,
 				2DABA9402B2CB6A500352B04 /* SceneDelegate.swift in Sources */,
 				2DABA9892B2DFEDC00352B04 /* Main.swift in Sources */,
+				2DABA9972B330DCF00352B04 /* RoomsResponce.swift in Sources */,
 				2DABA97F2B2DCA1800352B04 /* HotelResponce.swift in Sources */,
 				2DABA9922B32F59C00352B04 /* ButtonTableViewCell.swift in Sources */,
+				2DABA9B62B34A43A00352B04 /* BookingPresenter.swift in Sources */,
+				2DABA9B42B349C1F00352B04 /* BookingResponce.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
