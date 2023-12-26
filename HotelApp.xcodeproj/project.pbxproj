@@ -43,6 +43,9 @@
 		2DABA9B62B34A43A00352B04 /* BookingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DABA9B52B34A43A00352B04 /* BookingPresenter.swift */; };
 		2DABA9B82B34B10F00352B04 /* BookingDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DABA9B72B34B10F00352B04 /* BookingDataTableViewCell.swift */; };
 		2DABA9BA2B34BFE400352B04 /* ClientDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DABA9B92B34BFE400352B04 /* ClientDataTableViewCell.swift */; };
+		2DABA9BD2B35BA4B00352B04 /* AGInputControls in Frameworks */ = {isa = PBXBuildFile; productRef = 2DABA9BC2B35BA4B00352B04 /* AGInputControls */; };
+		2DED02642B3A0CC700DA6A83 /* PayButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DED02632B3A0CC700DA6A83 /* PayButtonTableViewCell.swift */; };
+		2DED02662B3A152700DA6A83 /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DED02652B3A152700DA6A83 /* SuccessViewController.swift */; };
 		D558BF2AC78A82982A7D68F8 /* Pods_HotelApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E385DE8554C435897DA16628 /* Pods_HotelApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +107,8 @@
 		2DABA9B52B34A43A00352B04 /* BookingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingPresenter.swift; sourceTree = "<group>"; };
 		2DABA9B72B34B10F00352B04 /* BookingDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDataTableViewCell.swift; sourceTree = "<group>"; };
 		2DABA9B92B34BFE400352B04 /* ClientDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientDataTableViewCell.swift; sourceTree = "<group>"; };
+		2DED02632B3A0CC700DA6A83 /* PayButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayButtonTableViewCell.swift; sourceTree = "<group>"; };
+		2DED02652B3A152700DA6A83 /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
 		4FEC4CF2E8A37140936AB1E2 /* Pods-HotelApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotelApp.debug.xcconfig"; path = "Target Support Files/Pods-HotelApp/Pods-HotelApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7ECB20AF9C5BAA27BA032C16 /* Pods-HotelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotelApp.release.xcconfig"; path = "Target Support Files/Pods-HotelApp/Pods-HotelApp.release.xcconfig"; sourceTree = "<group>"; };
 		E385DE8554C435897DA16628 /* Pods_HotelApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HotelApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +120,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D558BF2AC78A82982A7D68F8 /* Pods_HotelApp.framework in Frameworks */,
+				2DABA9BD2B35BA4B00352B04 /* AGInputControls in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +342,7 @@
 			children = (
 				2DABA9A92B3463AF00352B04 /* Cells */,
 				2DABA9A72B33661F00352B04 /* BookingViewController.swift */,
+				2DED02652B3A152700DA6A83 /* SuccessViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -346,6 +353,7 @@
 				2DABA9AA2B3463D000352B04 /* IntroTableViewCell.swift */,
 				2DABA9B72B34B10F00352B04 /* BookingDataTableViewCell.swift */,
 				2DABA9B92B34BFE400352B04 /* ClientDataTableViewCell.swift */,
+				2DED02632B3A0CC700DA6A83 /* PayButtonTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -410,6 +418,9 @@
 			dependencies = (
 			);
 			name = HotelApp;
+			packageProductDependencies = (
+				2DABA9BC2B35BA4B00352B04 /* AGInputControls */,
+			);
 			productName = HotelApp;
 			productReference = 2DABA93A2B2CB6A500352B04 /* HotelApp.app */;
 			productType = "com.apple.product-type.application";
@@ -482,6 +493,9 @@
 				Base,
 			);
 			mainGroup = 2DABA9312B2CB6A500352B04;
+			packageReferences = (
+				2DABA9BB2B35BA4B00352B04 /* XCRemoteSwiftPackageReference "AGInputControls" */,
+			);
 			productRefGroup = 2DABA93B2B2CB6A500352B04 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -581,6 +595,7 @@
 				2DABA97D2B2DC91000352B04 /* HotelRouter.swift in Sources */,
 				2DABA9AB2B3463D100352B04 /* IntroTableViewCell.swift in Sources */,
 				2DABA9422B2CB6A500352B04 /* HotelViewController.swift in Sources */,
+				2DED02662B3A152700DA6A83 /* SuccessViewController.swift in Sources */,
 				2DABA9A82B33661F00352B04 /* BookingViewController.swift in Sources */,
 				2DABA9702B2DC73E00352B04 /* Router.swift in Sources */,
 				2DABA93E2B2CB6A500352B04 /* AppDelegate.swift in Sources */,
@@ -596,6 +611,7 @@
 				2DABA97F2B2DCA1800352B04 /* HotelResponce.swift in Sources */,
 				2DABA9922B32F59C00352B04 /* ButtonTableViewCell.swift in Sources */,
 				2DABA9B62B34A43A00352B04 /* BookingPresenter.swift in Sources */,
+				2DED02642B3A0CC700DA6A83 /* PayButtonTableViewCell.swift in Sources */,
 				2DABA9B42B349C1F00352B04 /* BookingResponce.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -926,6 +942,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2DABA9BB2B35BA4B00352B04 /* XCRemoteSwiftPackageReference "AGInputControls" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ivedeneev/AGInputControls.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2DABA9BC2B35BA4B00352B04 /* AGInputControls */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2DABA9BB2B35BA4B00352B04 /* XCRemoteSwiftPackageReference "AGInputControls" */;
+			productName = AGInputControls;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2DABA9322B2CB6A500352B04 /* Project object */;
 }

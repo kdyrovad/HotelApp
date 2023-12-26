@@ -40,7 +40,6 @@ extension Router {
 extension Router {
     func request() throws -> URLRequest {
         let urlString = baseUrl + path
-        print("Full url: \(urlString)")
         
         guard let url = URL(string: urlString) else {
             throw NetworkError.missingURL
@@ -51,7 +50,6 @@ extension Router {
         request.httpBody = httpBody
         
         addHeaders(to: &request)
-//        try addParameters(to: &request)
         
         return request
     }

@@ -43,7 +43,6 @@ final class HotelPresenter: HotelPresenterProtocol {
     }
     
     func loadView(completion: @escaping () -> Void) {
-        print("start loadView")
         view?.updateView(withLoader: true)
         
         service.getHotels { [weak self] result in
@@ -53,14 +52,11 @@ final class HotelPresenter: HotelPresenterProtocol {
             case .success(let hotels):
                 self?.hotels = hotels
                 self?.view?.updateView()
-                print("loadView success")
                 completion()
             case .failure(let error):
                 self?.view?.updateView(withError: error.localizedDescription)
-                print("loadView error")
                 print((error.localizedDescription))
             }
-            print("end loadView")
         }
     }
     

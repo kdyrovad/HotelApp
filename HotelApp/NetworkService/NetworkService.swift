@@ -23,7 +23,6 @@ final class Network: NetworkService {
     }
 
     private func call<T>(with router: Router, completion: @escaping (Result<T, NetworkError>) -> Void) where T : Decodable {
-        print("CallNetworkService \(router.path)")
         guard let request = try? router.request() else {
             completion(.failure(.missingRequest))
             return

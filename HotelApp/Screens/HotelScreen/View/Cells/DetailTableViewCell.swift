@@ -44,7 +44,6 @@ class DetailTableViewCell: UITableViewCell {
         label.font = UIFont(name: "SF Pro Display", size: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = "Отель VIP"
         
         return label
     }()
@@ -103,13 +102,11 @@ class DetailTableViewCell: UITableViewCell {
             contentView.addSubview($0)
         }
         
-        print(peculiarities)
         setConstraints()
     }
     
     func configure(with model: HotelModelProtocol) {
         detailLabel.text = model.hotelDescription
-        print("Configure: \(model.hotelPeculiraties)")
         peculiarities = model.hotelPeculiraties
         setupStackViews()
     }
@@ -206,16 +203,23 @@ class DetailTableViewCell: UITableViewCell {
             }
             
             imageView.snp.makeConstraints { make in
-//                make.height.equalTo(24)
-//                make.width.equalTo(24)
                 make.centerY.equalTo(overallHorizontalStackView.snp.centerY)
             }
             
             detailStackView.addArrangedSubview(overallHorizontalStackView)
             
+            overallHorizontalStackView.snp.makeConstraints { make in
+                make.leading.equalTo(detailStackView)
+                make.trailing.equalTo(detailStackView)
+            }
+            
+            next.snp.makeConstraints { make in
+                make.centerY.equalTo(overallHorizontalStackView.snp.centerY)
+            }
+            
             if detailStackView.arrangedSubviews.count < 5 {
                 let separator = createSeparator()
-                separator.backgroundColor = UIColor(hexString: "#828796").withAlphaComponent(15)
+                separator.backgroundColor = UIColor(hexString: "#828796").withAlphaComponent(0.15)
                 detailStackView.addArrangedSubview(separator)
                 separator.snp.makeConstraints { make in
                     make.height.equalTo(1)
@@ -250,7 +254,7 @@ extension DetailTableViewCell {
         detailLabel.snp.makeConstraints { make in
             make.top.equalTo(overallStackView.snp.bottom).offset(16)
             make.leading.equalTo(contentView).offset(16)
-            make.trailing.equalTo(contentView).offset(-64)
+            make.trailing.equalTo(contentView).offset(-16)
         }
         
         detailStackView.snp.makeConstraints { make in make.top.equalTo(detailView).offset(15)

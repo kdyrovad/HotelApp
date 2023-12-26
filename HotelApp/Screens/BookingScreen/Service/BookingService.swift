@@ -15,7 +15,6 @@ protocol BookingServiceProtocol {
 final class BookingService: BookingServiceProtocol {
     
     func getBooking(completion: @escaping (Result<BookingModelProtocol, NetworkError>) -> Void) {
-        print("Calling getBooking")
         client.execute(with: HotelRouter.booking) { [weak self] (result: Result<Bookingg, NetworkError>) in
             guard let self = self else { return }
             switch result {

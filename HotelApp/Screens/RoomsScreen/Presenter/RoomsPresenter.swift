@@ -36,7 +36,6 @@ final class RoomsPresenter: RoomsPresenterProtocol {
     }
     
     func loadView(completion: @escaping () -> Void) {
-        print("start loadView")
         view?.updateView(withLoader: true)
         
         service.getRooms { [weak self] result in
@@ -46,14 +45,11 @@ final class RoomsPresenter: RoomsPresenterProtocol {
             case .success(let rooms):
                 self?.rooms = rooms
                 self?.view?.updateView()
-                print("loadView success")
                 completion()
             case .failure(let error):
                 self?.view?.updateView(withError: error.localizedDescription)
-                print("loadView error")
                 print((error.localizedDescription))
             }
-            print("end loadView")
         }
     }
     

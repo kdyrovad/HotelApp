@@ -10,6 +10,8 @@ import UIKit
 class BookingViewController: UIViewController {
     
     private var presenter: BookingPresenterProtocol
+    
+    var bookingButtonTappedClosure: (() -> Void)?
 
     //MARK: - Init
     
@@ -52,6 +54,7 @@ class BookingViewController: UIViewController {
         tableView.register(IntroTableViewCell.self, forCellReuseIdentifier: "introCell")
         tableView.register(BookingDataTableViewCell.self, forCellReuseIdentifier: "dataCell")
         tableView.register(ClientDataTableViewCell.self, forCellReuseIdentifier: "clientDataCell")
+        tableView.register(PayButtonTableViewCell.self, forCellReuseIdentifier: "payButtonCell")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
@@ -107,8 +110,19 @@ extension BookingViewController: UITableViewDataSource, UITableViewDelegate {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "clientDataCell", for: indexPath) as? ClientDataTableViewCell else {
                 return UITableViewCell()
             }
+            
+            cell.successTappedClosure = {
+                self.navigationController?.pushViewController(Main.shared.successScreen(), animated: true)
+            }
+            
             cell.layer.cornerRadius = 12
 //            cell.configure(with: presenter.model())
+            return cell
+        } else if indexPath.section == 3 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "payButtonCell", for: indexPath) as? PayButtonTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.layer.cornerRadius = 12
             return cell
         } else {
             return UITableViewCell()
@@ -119,9 +133,11 @@ extension BookingViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             return 150
         } else if indexPath.section == 1 {
-            return 350
+            return 320
+        } else if indexPath.section == 3 {
+            return 88
         } else {
-            return 200
+            return 270
         }
     }
     
@@ -136,7 +152,7 @@ extension BookingViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        3
+        4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -164,5 +180,4 @@ extension BookingViewController: BookingViewProtocol {
     
     func updateView(withError message: String) {}
 }
-
 

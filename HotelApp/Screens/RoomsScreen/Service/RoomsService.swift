@@ -14,7 +14,6 @@ protocol RoomsServiceProtocol {
 final class RoomsService: RoomsServiceProtocol {
     
     func getRooms(completion: @escaping (Result<RoomsModelProtocol, NetworkError>) -> Void) {
-        print("Calling getRooms")
         client.execute(with: HotelRouter.rooms) { [weak self] (result: Result<Room, NetworkError>) in
             guard let self = self else { return }
             switch result {

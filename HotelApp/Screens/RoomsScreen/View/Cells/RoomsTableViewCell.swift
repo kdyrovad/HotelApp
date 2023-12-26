@@ -144,6 +144,7 @@ class RoomsTableViewCell: UITableViewCell {
         setupPeculiaritiesStackViews()
         priceLabel.text = model.price
         priceTextLabel.text = model.pricePer
+        imageNames = model.imageUrls
     }
     
     private func setupPeculiaritiesStackViews() {
@@ -159,7 +160,6 @@ class RoomsTableViewCell: UITableViewCell {
 
             let container = UIView()
             container.backgroundColor = UIColor(hexString: "#FBFBFC")
-//            container.backgroundColor = .red
             container.layer.cornerRadius = 5
             container.addSubview(label)
             
@@ -232,18 +232,10 @@ class RoomsTableViewCell: UITableViewCell {
         
         carousel.addSubview(pageControl)
         
-//        pageControl.snp.makeConstraints { make in
-//            make.centerX.equalTo(carousel)
-//            make.bottom.equalTo(carousel).offset(-20)
-//            make.height.equalTo(17)
-//            make.width.equalTo(pageControl.size(forNumberOfPages: pageControl.numberOfPages).width + 20)
-//        }
-        
         NSLayoutConstraint.activate([
             pageControl.centerXAnchor.constraint(equalTo: carousel.centerXAnchor),
             pageControl.bottomAnchor.constraint(equalTo: carousel.bottomAnchor, constant: -20),
-            pageControl.heightAnchor.constraint(equalToConstant: 17),
-//            pageControl.widthAnchor.constraint(equalTo: pageControl.widthAnchor, constant: 5) // Устанавливаем ширину с отступами
+            pageControl.heightAnchor.constraint(equalToConstant: 17)
         ])
     }
     
@@ -292,7 +284,6 @@ extension RoomsTableViewCell {
             make.leading.equalTo(moreButton.snp.trailing).offset(2)
             make.trailing.equalTo(moreButtonView).offset(-2)
             make.bottom.equalTo(moreButtonView).offset(-4)
-//            make.height.equalTo(24)
         }
         
         priceStackView.snp.makeConstraints { make in
@@ -306,6 +297,7 @@ extension RoomsTableViewCell {
             make.leading.equalTo(contentView.snp.leading).offset(16)
             make.trailing.equalTo(contentView.snp.trailing).offset(-16)
             make.bottom.equalTo(contentView).offset(-16)
+            make.height.equalTo(48)
         }
     }
 }

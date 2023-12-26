@@ -58,5 +58,10 @@ final class Main {
         let bookingVC = BookingViewController(presenter: presenter)
         return bookingVC
     }
+    
+    func successScreen() -> UIViewController {
+        let vc = SuccessViewController()
+        return vc
+    }
 }
 

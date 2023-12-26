@@ -27,12 +27,10 @@ class HotelViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         view.backgroundColor = UIColor(hexString: "#F6F6F9")
         navigationItem.title = "Отель"
-        print("start viewWillAppear")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("start viewDidLoad")
         presenter.loadView { [weak self] in
             self?.tableView.reloadData()
             self?.setUpViews()
