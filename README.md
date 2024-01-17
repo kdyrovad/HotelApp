@@ -1,12 +1,24 @@
 # **HotelApp**
 
-The Hotel Booking App is an iOS application that allows users to explore and book hotel rooms seamlessly. Discover essential information about hotels, view detailed descriptions, and make reservations based on room descriptions and photos.
+Welcome to HotelApp – the iOS application that redefines your hotel booking experience. Uncover a world of possibilities as you seamlessly explore, discover, and book hotel rooms. Get ready for a journey where essential information meets stunning visuals, making your reservations more delightful than ever🏨✨
 
 ## **Overview**
 
 + Architecure: MVP(Model-View-Presenter)
 + UI: Programmatical 
-+ Libraries used: SnapKit, KingFisher
++ Libraries used:
+  - SnapKit: For programmatical AutoLayout
+  - KingFisher: For efficient image loading and caching
+
+## Key Features
+- **Explore Hotels:**
+<br>Browse through a curated selection of hotels.
+- **Detailed Descriptions:**
+<br>Access comprehensive details about each hotel, ensuring an informed choice.
+- **Visual Richness:**
+<br>Immerse yourself in stunning visuals with detailed room descriptions and photos.
+- **Seamless Reservations:**
+<br>Book your preferred room effortlessly.
 
 ## **Demo**
 ![](https://github.com/kdyrovad/HotelApp/assets/103488736/3a21bab5-2530-4eb6-8528-cc875c283957)
