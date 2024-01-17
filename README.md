@@ -21,7 +21,7 @@ Welcome to HotelApp – the iOS application that redefines your hotel booking ex
 <br>Book your preferred room effortlessly.
 
 ## **Demo**
-![](https://github.com/kdyrovad/HotelApp/assets/103488736/3a21bab5-2530-4eb6-8528-cc875c283957)
+![](https://github.com/kdyrovad/HotelApp/assets/103488736/177f0e02-ccd1-43a3-b61a-93138223b66b)
 
 
 ## **How to install**
